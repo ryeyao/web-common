@@ -1,0 +1,31 @@
+//
+// Created with JetBrains WebStorm.
+// User: rye
+// Date: 9/13/13
+// Time: 6:46 PM
+// To change this template use File | Settings | File Templates.
+
+extends layout
+block navbar
+
+block content
+    #login-container
+        form(method='post')#login-form.well.span4
+            h1 Hello!
+            p.subheading Please Login To Your Account
+            label Email
+            input(type='email', name='email', id='email-tf').span4.required
+            label Password
+            input(type='password', name='pass', id='pass-tf').span4.required
+            button(type='submit')#btn-login.btn.btn-primary
+                i.icon-lock.icon-white
+                | Sign in
+            label#remember-me.checkbox Remember Me
+                input(type='checkbox', checked)
+            .clear-fix
+            hr
+            btm-links
+                a(href='#')#forgot-password Forgot Your Password?
+                a(href='/signup')#create-account Create An Account
+
+block footer

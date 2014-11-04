@@ -1,0 +1,25 @@
+//
+// Created with JetBrains WebStorm.
+// User: rye
+// Date: 9/16/13
+// Time: 9:34 AM
+// To change this template use File | Settings | File Templates.
+
+
+div(class='modal fade', tabindex='-1', role='dialog', aria-labelledby='signup-modal-label', aria-hidden='true')#signup-modal
+    div(class='modal-dialog')
+        div(class='modal-content')
+            div(class='modal-header')
+                button(type='button', class='close', data-dismiss='modal', aria-hidden='true') &times;
+                h4.modal-title Sign Up
+            div(class='modal-body')
+                include account
+                //include modals/alert
+            div(class='modal-footer')
+                button(type='button', class='btn btn-default', data-dismiss='modal') Close
+                button(type='button', class='btn btn-primary') Submit
+
+script(src='/js/vendor/jquery.form.js')
+script(src='/js/views/signup.js')
+script(src='/js/controllers/signupController.js')
+script(src='/js/form-validators/accountValidator.js')

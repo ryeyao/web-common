@@ -1,0 +1,23 @@
+
+extends layout
+
+block content
+    include account
+    include modals/alert
+    include modals/confirm
+
+block navbrand
+    a(href='/home').brand Control Panel
+block loginstatus
+    button#btn-logout.btn.btn-primary.pull-right
+        i.icon-lock.icon-white
+        | Sign Out
+
+block scripts
+
+    script(src='/js/vendor/jquery.form.js').
+    script(src='/js/vendor/bootstrap-modal.js').
+    script(src='/js/vendor/bootstrap-transition.js').
+    script(src='/js/views/profile.js').
+    script(src='/js/controllers/profileController.js').
+    script(src='/js/form-validators/accountValidator.js').

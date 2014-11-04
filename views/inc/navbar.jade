@@ -1,0 +1,52 @@
+nav(class='navbar navbar-default navbar-static-top', role='navigation')
+    .navbar-header
+        button(type='button', class='navbar-toggle', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        block navbrand
+            a(class='navbar-brand', href='/') #{title}
+    div(class='collapse navbar-collapse navbar-ex1-collapse')
+        ul(class='nav navbar-nav')
+            li.active
+                a(href='/dashboard') Dashboard
+            if user
+                if user.authority == 'admin'
+                    li
+                        a(href='/attendence') Attendence
+            li
+                a(href='#about') About
+            li.dropdown
+                a(href='#', class='dropdown-toggle', data-toggle='dropdown') Dropdown
+                    b.caret
+                ul.dropdown-menu
+                    li
+                        a(href='#') Action
+                    li
+                        a(href='#') Another action
+                    li.divider
+                    li.nav-header Nav header
+                    li
+                        a(href='#') Separated link
+                    li
+                        a(href='#') Another Separated link
+        block loginstatus
+            #navbar-form-container
+                if user
+                    p.navbar-text.navbar-right Signed in as
+                        a(href='/profile')  #{user.email}
+                        &nbsp;
+                        a(href='/signout') Sign out
+                else
+                    form(method='post', action='/login', class='form-inline navbar-form navbar-right')#navbar-form
+                        input(type='text', name='email', placeholder='Email').span2
+                        &nbsp;
+                        input(type='password', name='pass', placeholder='Password').span2
+                        &nbsp;&nbsp;
+                        button(type='submit').btn Sign in
+                        &nbsp;
+                        button(type='button', data-toggle='modal', data-target='#signup-modal').btn Sign up
+script('/js/vendor/jquery-cookie/jquery.cookie.js')
+script('/js/views/navbar.js')
+script('/js/controllers/navbarController.js')
