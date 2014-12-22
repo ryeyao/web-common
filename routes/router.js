@@ -11,6 +11,11 @@ var user = require('./user');
 
 module.exports = function(app) {
 
+    if (typeof app.passport === 'undefined') {
+        console.log('ERROR: Passport not defined.');
+        return;
+    }
+
     passport = app.passport;
 
     auto_auth = passport.authenticate('local', {usernameField:'email', passwordField:'pass', failureRedirect: '#', successRedirect: '/'});
@@ -29,8 +34,7 @@ module.exports = function(app) {
         res.redirect('/');
     }
 
-//    app.get('/', pages.index);
-    app.get('/', pages.attendence);
+    app.get('/', pages.index);
 
     app.get('/login', pages.login);
     app.post('/login', auto_auth, forms.login);

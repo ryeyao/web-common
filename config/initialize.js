@@ -8,6 +8,7 @@
 var fs = require('fs');
 var async = require('async');
 var path = require('path');
+var process = require('process');
 
 
 
@@ -51,12 +52,14 @@ function set_initializers(app) {
         require(path.join(dir, file))(app, function(err, msg) {
             console.log('Initializating ' + file.replace('.js', '') + '...');
             if (err) {
-                console.log('Error:' + err + ' ' + msg);
-                app.exit();
+                console.log('Failed.');
+                console.log('[ERROR] ' + err + ': ' + msg);
+                process.exit(1);
             } else {
                 if (msg) {
-                    console.log('INFO: ' + msg);
+                    console.log('[INFO] ' + msg);
                 }
+                console.log('Done.');
                 next();
             }
         })

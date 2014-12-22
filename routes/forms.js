@@ -40,9 +40,7 @@ exports.update_account = function(req, res) {
 
 exports.login = function(req, res) {
     // NOTE: No need to do anything. Passport.authenticate will handle this request.
-    console.log('Oh!');
     if (req.param('remember-me') == 'true') {
-        console.log('Yes!');
         res.cookie('email', req.param('email'), {maxAge: 900000});
         res.cookie('pass', req.param('pass'), {maxAge: 900000});
     }

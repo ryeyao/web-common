@@ -12,17 +12,19 @@ var crypto = require('crypto');
 
 module.exports = function(app, done) {
 
+    if (typeof app.user_model === 'undefined') {
+        done('Failed to initialize Passport', 'No User Model Defined.')
+        return;
+
+    }
     passport.serializeUser(function(user, done) {
-//        console.log('Serialize User id ' + user._id);
         done(null, user._id);
     });
 
     passport.deserializeUser(function(id, done) {
 
-//        console.log('De-Serialize User');
         app.user_model.sync();
         app.user_model.get(id, function(err, user) {
-//            console.log('err ' + err);
             if (err) {
                 done(err);
             } else {
@@ -33,16 +35,12 @@ module.exports = function(app, done) {
 
     passport.use(new LocalStrategy({usernameField:'email', passwordField:'pass'},
         function(email, password, done) {
-            console.log('passport.use ' + email + password);
-            console.log('Auth ok, email: ' + email + ' pass ' + password);
             app.user_model.sync();
             app.user_model.find({email:email}, function(err, user) {
                 if (err || !user.length) {
-                    console.log('No User Found! err ' + err + ' length ' + user.length);
-                    done(err);
+                    done(err, 'User not found.');
                 } else {
                     if (user.length) {
-                        console.log('User ' + user[0] + ' found.');
                         validatePassword(password, user[0].pass, function(err, res) {
                             if (res){
                                 done(err, user[0]);
@@ -60,7 +58,7 @@ module.exports = function(app, done) {
     app.use(passport.session());
 
     app.passport = passport;
-    done(null, null);
+    done(null, 'Passport initialized successfully.');
 
 }
 

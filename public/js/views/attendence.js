@@ -8,7 +8,6 @@
 $(document).ready(function() {
 
     var ac = new AttendenceController();
-//    var table = $('#attendence-table');
 
     var table_div = $('#attendence-div');
     var table = $('<table class=\'table table-striped table-bordered table-responsive table-hover table-condensed\'></table>');

@@ -7,5 +7,5 @@ module.exports = function(app) {
         dbstring: "mongodb://localhost/prod_vpipes"
     };
 
-    app.coocieSecret = 'visual pipes';
+    app.coocieSecret = 'Your Secret';
 }

@@ -16,7 +16,7 @@ module.exports = function(app) {
         dbstring: "mongodb://localhost/mydb"
     };
 
-    app.coocieSecret = 'visual pipes';
+    app.coocieSecret = 'Your Secret';
 
     app.use(express.errorHandler());
     app.simplesmtp = {

@@ -4,11 +4,11 @@
  */
 
 exports.index = function(req, res){
-    res.render('index', { user: req.user, title: 'Visual Pipes' });
+    res.render('index', { user: req.user, title: 'Web Commons' });
 };
 
 exports.login = function(req, res) {
-    res.render('login', { user: req.user, title: 'Visual Pipes' });
+    res.render('login', { user: req.user, title: 'Web Commons' });
 }
 
 exports.signup = function(req, res) {
@@ -16,7 +16,7 @@ exports.signup = function(req, res) {
 }
 
 exports.profile = function(req, res) {
-    res.render('profile', { user: req.user, title: 'Visual Pipes' });
+    res.render('profile', { user: req.user, title: 'Web Commons' });
 }
 
 exports.dashboard = function(req, res) {
